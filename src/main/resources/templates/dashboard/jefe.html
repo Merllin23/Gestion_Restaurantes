@@ -8,8 +8,9 @@
     <div class="row text-center">
 
         <div class="col-md-6 mb-4">
-            <div class="card shadow-sm h-100">
-                <div class="card-body">
+            <div class="card shadow-sm h-100" style="height: 400px;">
+                <img th:src="@{/home/reportes.png}" class="card-img-top" alt="Reportes Globales" style="height: 200px; width: 100%; object-fit: cover;">
+                <div class="card-body text-center">
                     <h5 class="card-title">Reportes Globales</h5>
                     <p class="card-text">Visualiza el rendimiento de todas las sucursales.</p>
                     <a th:href="@{/jefe/reportes_global}" class="btn btn-danger">Ver Reportes</a>
@@ -18,11 +19,64 @@
         </div>
 
         <div class="col-md-6 mb-4">
-            <div class="card shadow-sm h-100">
-                <div class="card-body">
+            <div class="card shadow-sm h-100" style="height: 400px;">
+                <img th:src="@{/home/metrica.png}" class="card-img-top" alt="Métricas" style="height: 200px; width: 100%; object-fit: cover;">
+                <div class="card-body text-center">
                     <h5 class="card-title">Métricas</h5>
                     <p class="card-text">Consulta métricas de ventas y pedidos por sucursal.</p>
                     <a th:href="@{/jefe/metricas}" class="btn btn-danger">Ver Métricas</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row text-center">
+
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm h-100" style="height: 400px;">
+                <img th:src="@{/home/gestion.jpg}" class="card-img-top" alt="Gestión de Personal" style="height: 200px; width: 100%; object-fit: cover;">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Gestión de Personal</h5>
+                    <p class="card-text">Administra el personal asignado a tu sucursal.</p>
+                    <a th:href="@{/jefe/personal}" class="btn btn-danger">Ver Personal</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm h-100" style="height: 400px;">
+                <img th:src="@{/home/inventario.png}" class="card-img-top" alt="Inventario Local" style="height: 200px; width: 100%; object-fit: cover;">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Inventario Local</h5>
+                    <p class="card-text">Revisa y gestiona el inventario de insumos en la sucursal.</p>
+                    <a th:href="@{/jefe/inventario}" class="btn btn-danger">Ver Inventario</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row text-center">
+
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm h-100" style="height: 400px;">
+                <img th:src="@{/home/pedidos.png}" class="card-img-top" alt="Pedidos Pendientes" style="height: 200px; width: 100%; object-fit: cover;">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Pedidos Pendientes</h5>
+                    <p class="card-text">Monitorea los pedidos en proceso y su estado.</p>
+                    <a th:href="@{/jefe/pedidos}" class="btn btn-danger">Ver Pedidos</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm h-100" style="height: 400px;">
+                <img th:src="@{/home/finanzas.jpg}" class="card-img-top" alt="Finanzas" style="height: 200px; width: 100%; object-fit: cover;">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Finanzas</h5>
+                    <p class="card-text">Accede a reportes financieros de la sucursal.</p>
+                    <a th:href="@{/jefe/finanzas}" class="btn btn-danger">Ver Finanzas</a>
                 </div>
             </div>
         </div>

@@ -5,21 +5,145 @@
 
   <h2 class="text-center mb-4">Menú Pluck</h2>
 
-  <div class="row" th:each="platillo : ${platillos}">
+  <div class="row">
     <div class="col-md-4 mb-4">
-      <div class="card shadow-sm">
-        <img th:src="@{/images/{img}(img=${platillo.imagen})}" class="card-img-top" th:alt="${platillo.nombre}">
+      <div class="card shadow-sm h-100">
+        <img th:src="@{/home/pollo.jpg}" class="card-img-top img-fluid" style="height: 200px; object-fit: cover;" alt="Pollo con Papas">
         <div class="card-body text-center">
-          <h5 class="card-title" th:text="${platillo.nombre}">Nombre Platillo</h5>
-          <p class="card-text" th:text="${platillo.descripcion}">Descripción del platillo</p>
-          <p>Precio: S/. <span th:text="${platillo.precio}">0.00</span></p>
-          <form th:action="@{/cliente/carrito/agregar}" method="post">
-            <input type="hidden" th:name="id" th:value="${platillo.id}">
-            <button type="submit" class="btn btn-danger w-100">Agregar al carrito</button>
-          </form>
+          <h5 class="card-title">Pollo con Papas</h5>
+          <p class="card-text">Delicioso pollo frito acompañado de crujientes papas doradas y ensalada.</p>
+          <p>Precio: S/. <span>15.00</span></p>
+          <button type="button" class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#addToCartModal">Agregar al carrito</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm h-100">
+        <img th:src="@{/home/pizza.jpg}" class="card-img-top img-fluid" style="height: 200px; object-fit: cover;" alt="Pizza Margherita">
+        <div class="card-body text-center">
+          <h5 class="card-title">Pizza Margherita</h5>
+          <p class="card-text">Pizza clásica con salsa de tomate, mozzarella y albahaca fresca.</p>
+          <p>Precio: S/. <span>20.00</span></p>
+          <button type="button" class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#addToCartModal">Agregar al carrito</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm h-100">
+        <img th:src="@{/home/ensalada_cesar.jpg}" class="card-img-top img-fluid" style="height: 200px; object-fit: cover;" alt="Ensalada César">
+        <div class="card-body text-center">
+          <h5 class="card-title">Ensalada César</h5>
+          <p class="card-text">Ensalada fresca con lechuga romana, crutones y aderezo césar.</p>
+          <p>Precio: S/. <span>12.00</span></p>
+          <button type="button" class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#addToCartModal">Agregar al carrito</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm h-100">
+        <img th:src="@{/home/hamburguesa.jpg}" class="card-img-top img-fluid" style="height: 200px; object-fit: cover;" alt="Hamburguesa Clásica">
+        <div class="card-body text-center">
+          <h5 class="card-title">Hamburguesa Clásica</h5>
+          <p class="card-text">Hamburguesa jugosa con queso, lechuga, tomate y papas fritas.</p>
+          <p>Precio: S/. <span>18.00</span></p>
+          <button type="button" class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#addToCartModal">Agregar al carrito</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm h-100">
+        <img th:src="@{/home/carbonara.jpg}" class="card-img-top img-fluid" style="height: 200px; object-fit: cover;" alt="Pasta Carbonara">
+        <div class="card-body text-center">
+          <h5 class="card-title">Pasta Carbonara</h5>
+          <p class="card-text">Pasta italiana con salsa cremosa de huevo, panceta y queso parmesano.</p>
+          <p>Precio: S/. <span>16.00</span></p>
+          <button type="button" class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#addToCartModal">Agregar al carrito</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm h-100">
+        <img th:src="@{/home/tacos.jpg}" class="card-img-top img-fluid" style="height: 200px; object-fit: cover;" alt="Tacos al Pastor">
+        <div class="card-body text-center">
+          <h5 class="card-title">Tacos al Pastor</h5>
+          <p class="card-text">Tacos tradicionales con carne al pastor, piña, cebolla y cilantro.</p>
+          <p>Precio: S/. <span>14.00</span></p>
+          <button type="button" class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#addToCartModal">Agregar al carrito</button>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="modal fade" id="addToCartModal" tabindex="-1" aria-labelledby="addToCartModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addToCartModalLabel">Agregar al Carrito</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="quantity" class="form-label">Cantidad</label>
+              <input type="number" class="form-control" id="quantity" min="1" value="1">
+            </div>
+            <div class="mb-3">
+              <label for="address" class="form-label">Dirección de Entrega</label>
+              <textarea class="form-control" id="address" rows="3" placeholder="Ingresa tu dirección"></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="paymentMethod" class="form-label">Método de Pago</label>
+              <select class="form-select" id="paymentMethod">
+                <option value="efectivo">Efectivo</option>
+                <option value="tarjeta">Tarjeta de Crédito/Débito</option>
+                <option value="transferencia">Transferencia Bancaria</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="sucursal" class="form-label">Sucursal</label>
+              <select class="form-select" id="sucursal">
+                <option value="centro">Sucursal Centro</option>
+                <option value="norte">Sucursal Norte</option>
+                <option value="sur">Sucursal Sur</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <p class="text-success"><strong>Pedido disponible: Sí</strong></p>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-danger" onclick="confirmOrder()">Confirmar Pedido</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="successModalLabel">Pedido Completado</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>¡Tu pedido ha sido completado exitosamente!</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function confirmOrder() {
+      var addToCartModal = bootstrap.Modal.getInstance(document.getElementById('addToCartModal'));
+      addToCartModal.hide();
+
+      var successModal = new bootstrap.Modal(document.getElementById('successModal'));
+      successModal.show();
+    }
+  </script>
 
 </div>
