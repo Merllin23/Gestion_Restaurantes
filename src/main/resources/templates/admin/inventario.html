@@ -5,7 +5,7 @@
 
     <h2 class="text-center mt-4 mb-4">Inventario de Insumos</h2>
 
-    <table class="table table-striped">
+    <table class="table table-striped table-hover">
         <thead class="table-danger">
         <tr>
             <th>Insumo</th>
@@ -16,6 +16,7 @@
         </tr>
         </thead>
         <tbody>
+
         <tr th:each="item : ${inventario}">
             <td th:text="${item.insumo.nombre}">Insumo</td>
             <td th:text="${item.sucursal.nombre}">Sucursal</td>
@@ -25,6 +26,47 @@
                 <a th:href="@{/admin/inventario/update/{id}(id=${item.idInventario})}" class="btn btn-sm btn-success">Actualizar</a>
             </td>
         </tr>
+
+        <tr>
+            <td>**Harina de Trigo**</td>
+            <td>Lima Centro</td>
+            <td>250 Kg</td>
+            <td>14/10/2025 15:30</td>
+            <td>
+                <button class="btn btn-sm btn-success disabled">Actualizar</button>
+            </td>
+        </tr>
+
+        <tr class="table-warning">
+            <td>**Aceite Vegetal**</td>
+            <td>Cusco Principal</td>
+            <td>12 Litros</td>
+            <td>15/10/2025 09:10</td>
+            <td>
+                <button class="btn btn-sm btn-success disabled">Actualizar</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td>**Pechuga de Pollo**</td>
+            <td>Arequipa Norte</td>
+            <td>45 Kg</td>
+            <td>15/10/2025 10:00</td>
+            <td>
+                <button class="btn btn-sm btn-success disabled">Actualizar</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td>**Queso Parmesano**</td>
+            <td>Lima Centro</td>
+            <td>8 Unidades</td>
+            <td>12/10/2025 17:00</td>
+            <td>
+                <button class="btn btn-sm btn-success disabled">Actualizar</button>
+            </td>
+        </tr>
+
         </tbody>
     </table>
 

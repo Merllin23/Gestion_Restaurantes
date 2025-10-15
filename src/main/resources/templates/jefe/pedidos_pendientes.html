@@ -1,0 +1,97 @@
+<div xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     layout:decorate="~{layout}"
+     layout:fragment="content">
+
+    <h2 class="text-center mt-4 mb-4">Pedidos Pendientes</h2>
+    <p class="text-center text-muted mb-4">Monitorea los pedidos en proceso y su estado actual.</p>
+
+    <div class="d-flex justify-content-start mb-3">
+        <a th:href="@{/admin/pedidos(estado='Pendiente')}" class="btn btn-warning me-2">Pendientes</a>
+        <a th:href="@{/admin/pedidos(estado='EnProceso')}" class="btn btn-info me-2">En Proceso</a>
+        <a th:href="@{/admin/pedidos(estado='Listo')}" class="btn btn-success me-2">Listos para Entrega</a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-danger">
+            <tr>
+                <th>N° Pedido</th>
+                <th>Sucursal</th>
+                <th>Cliente</th>
+                <th>Hora del Pedido</th>
+                <th>Estado Actual</th>
+                <th>Detalle</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr th:each="pedido : ${pedidosPendientes}"
+                th:classappend="${pedido.estado == 'En Proceso'} ? 'table-info' : (${pedido.estado == 'Listo para Entrega'} ? 'table-success' : 'table-warning')">
+
+                <td th:text="${pedido.idPedido}">1001</td>
+                <td th:text="${pedido.sucursal.nombre}">Arequipa</td>
+                <td th:text="${pedido.cliente.nombre}">Ana Torres</td>
+                <td th:text="${#dates.format(pedido.fechaHoraPedido, 'HH:mm')}">12:30</td>
+                <td th:text="${pedido.estado}">En Proceso</td>
+                <td>
+                    <a th:href="@{/admin/pedidos/detalle/{id}(id=${pedido.idPedido})}" class="btn btn-sm btn-outline-danger">Ver Platos</a>
+                </td>
+
+                <td>
+                    <a th:href="@{/admin/pedidos/avanzar/{id}(id=${pedido.idPedido})}" class="btn btn-sm btn-primary">Avanzar Estado</a>
+                </td>
+            </tr>
+
+            <tr class="table-info">
+                <td>**1005**</td>
+                <td>Lima</td>
+                <td>Carla Rojas</td>
+                <td>13:15</td>
+                <td>**En Proceso**</td>
+                <td>
+                    <button class="btn btn-sm btn-outline-danger disabled">Ver Platos</button>
+                </td>
+                <td>
+                    <button class="btn btn-sm btn-primary disabled">Avanzar Estado</button>
+                </td>
+            </tr>
+
+            <tr class="table-success">
+                <td>**1004**</td>
+                <td>Arequipa</td>
+                <td>Julio Mesa</td>
+                <td>12:55</td>
+                <td>**Listo para Entrega**</td>
+                <td>
+                    <button class="btn btn-sm btn-outline-danger disabled">Ver Platos</button>
+                </td>
+                <td>
+                    <button class="btn btn-sm btn-success disabled">Cerrar Pedido</button>
+                </td>
+            </tr>
+
+            <tr class="table-warning">
+                <td>**1006**</td>
+                <td>Cusco</td>
+                <td>Pedro Díaz</td>
+                <td>13:35</td>
+                <td>**Pendiente**</td>
+                <td>
+                    <button class="btn btn-sm btn-outline-danger disabled">Ver Platos</button>
+                </td>
+                <td>
+                    <button class="btn btn-sm btn-primary disabled">Avanzar Estado</button>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div th:if="${#lists.isEmpty(pedidosPendientes)}" class="alert alert-info text-center mt-5">
+        ¡Excelente! No hay pedidos pendientes en este momento.
+    </div>
+
+</div>

@@ -9,7 +9,7 @@
         <a th:href="@{/admin/platos/create}" class="btn btn-danger">Nuevo Plato</a>
     </div>
 
-    <table class="table table-striped">
+    <table class="table table-striped table-hover">
         <thead class="table-danger">
         <tr>
             <th>Nombre</th>
@@ -21,6 +21,7 @@
         </tr>
         </thead>
         <tbody>
+
         <tr th:each="plato : ${platos}">
             <td th:text="${plato.nombre}">Nombre</td>
             <td th:text="${plato.descripcion}">Descripción</td>
@@ -32,7 +33,60 @@
                 <a th:href="@{/admin/platos/delete/{id}(id=${plato.idPlato})}" class="btn btn-sm btn-danger">Eliminar</a>
             </td>
         </tr>
+
+        <tr>
+            <td>**Lomo Saltado Clásico**</td>
+            <td>Trozos de lomo fino salteados con cebolla, tomate y papas fritas.</td>
+            <td>45.00</td>
+            <td>Sí</td>
+            <td>Platos Fuertes</td>
+            <td>
+                <button class="btn btn-sm btn-success disabled">Editar</button>
+                <button class="btn btn-sm btn-danger disabled">Eliminar</button>
+            </td>
+        </tr>
+
+        <tr class="table-secondary">
+            <td>**Causa Limeña**</td>
+            <td>Puré de papa amarilla relleno de pollo deshilachado y mayonesa.</td>
+            <td>30.50</td>
+            <td>**No**</td>
+            <td>Entradas</td>
+            <td>
+                <button class="btn btn-sm btn-success disabled">Editar</button>
+                <button class="btn btn-sm btn-danger disabled">Eliminar</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td>**Inca Kola (1 Litro)**</td>
+            <td>Bebida gaseosa nacional.</td>
+            <td>10.00</td>
+            <td>Sí</td>
+            <td>Bebidas</td>
+            <td>
+                <button class="btn btn-sm btn-success disabled">Editar</button>
+                <button class="btn btn-sm btn-danger disabled">Eliminar</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td>**Suspiro a la Limeña**</td>
+            <td>Dulce tradicional con manjarblanco y merengue.</td>
+            <td>15.90</td>
+            <td>Sí</td>
+            <td>Postres</td>
+            <td>
+                <button class="btn btn-sm btn-success disabled">Editar</button>
+                <button class="btn btn-sm btn-danger disabled">Eliminar</button>
+            </td>
+        </tr>
+
         </tbody>
     </table>
+
+    <div th:if="${#lists.isEmpty(platos)}" class="alert alert-info text-center mt-5">
+        El menú aún no tiene platos registrados.
+    </div>
 
 </div>

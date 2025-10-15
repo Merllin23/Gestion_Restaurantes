@@ -9,18 +9,20 @@
         <a th:href="@{/admin/proveedores/create}" class="btn btn-danger">Nuevo Proveedor</a>
     </div>
 
-    <table class="table table-striped">
+    <table class="table table-striped table-hover">
         <thead class="table-danger">
         <tr>
             <th>Nombre</th>
-            <th>Teléfono</th>
+            <th>RUC</th> <th>Teléfono</th>
             <th>Email</th>
             <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
+
         <tr th:each="prov : ${proveedores}">
             <td th:text="${prov.nombre}">Proveedor</td>
+            <td th:text="${prov.ruc}">12345678901</td>
             <td th:text="${prov.telefono}">000000000</td>
             <td th:text="${prov.email}">correo@proveedor.com</td>
             <td>
@@ -28,7 +30,56 @@
                 <a th:href="@{/admin/proveedores/delete/{id}(id=${prov.idProveedor})}" class="btn btn-sm btn-danger">Eliminar</a>
             </td>
         </tr>
+
+        <tr>
+            <td>**Carnes Premium S.A.C.**</td>
+            <td>20101234567</td>
+            <td>987 654 321</td>
+            <td>ventas@carnespremium.com</td>
+            <td>
+                <button class="btn btn-sm btn-success disabled">Editar</button>
+                <button class="btn btn-sm btn-danger disabled">Eliminar</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td>**Lácteos del Valle E.I.R.L.**</td>
+            <td>10701234567</td>
+            <td>990 123 456</td>
+            <td>contacto@lacteosvalle.pe</td>
+            <td>
+                <button class="btn btn-sm btn-success disabled">Editar</button>
+                <button class="btn btn-sm btn-danger disabled">Eliminar</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td>**Distribuidora Sol**</td>
+            <td>20401234567</td>
+            <td>(01) 456 7890</td>
+            <td>info@disol.com</td>
+            <td>
+                <button class="btn btn-sm btn-success disabled">Editar</button>
+                <button class="btn btn-sm btn-danger disabled">Eliminar</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td>**Ferretería Rápida**</td>
+            <td>10801234567</td>
+            <td>975 310 864</td>
+            <td>ventas@rapida.com</td>
+            <td>
+                <button class="btn btn-sm btn-success disabled">Editar</button>
+                <button class="btn btn-sm btn-danger disabled">Eliminar</button>
+            </td>
+        </tr>
+
         </tbody>
     </table>
+
+    <div th:if="${#lists.isEmpty(proveedores)}" class="alert alert-info text-center mt-5">
+        No hay proveedores registrados.
+    </div>
 
 </div>

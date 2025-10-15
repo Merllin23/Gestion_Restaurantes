@@ -102,6 +102,18 @@ public class ViewController {
         return "jefe/metricas";
     }
 
+    @GetMapping("/jefe/gestion_personal")
+    public String gestionPersonal() {return "jefe/gestion_personal";}
+
+    @GetMapping("/jefe/inventario_local")
+    public String inventariolocal() {return "jefe/inventario_local";}
+
+    @GetMapping("/jefe/pedidos_pendientes")
+    public String pedidospendientes() {return "jefe/pedidos_pendientes";}
+
+    @GetMapping("/jefe/finanzas_sucursal")
+    public String finanzassucursal() {return "jefe/finanzas_sucursal";}
+
     // Error
     @GetMapping("/error")
     public String errorPage() {

@@ -19,6 +19,7 @@
         </tr>
         </thead>
         <tbody>
+
         <tr th:each="pedido : ${pedidos}">
             <td th:text="${pedido.idPedido}">1</td>
             <td th:text="${pedido.cliente.nombre}">Cliente</td>
@@ -32,6 +33,63 @@
                 <a th:href="@{/admin/pedidos/update/{id}(id=${pedido.idPedido})}" class="btn btn-sm btn-success">Actualizar Estado</a>
             </td>
         </tr>
+
+        <tr class="table-success">
+            <td>**2034**</td>
+            <td>Sofía Mendoza</td>
+            <td>Lima Centro</td>
+            <td>Delivery</td>
+            <td>**Listo para Entrega**</td>
+            <td>15/10/2025 10:15</td>
+            <td>**125.50**</td>
+            <td>
+                <button class="btn btn-sm btn-danger disabled">Detalle</button>
+                <button class="btn btn-sm btn-success disabled">Cerrar</button>
+            </td>
+        </tr>
+
+        <tr class="table-info">
+            <td>**2035**</td>
+            <td>Mesa #4 (Salón)</td>
+            <td>Arequipa Sur</td>
+            <td>Salón</td>
+            <td>**En Proceso**</td>
+            <td>15/10/2025 10:25</td>
+            <td>**85.00**</td>
+            <td>
+                <button class="btn btn-sm btn-danger disabled">Detalle</button>
+                <button class="btn btn-sm btn-success disabled">Avanzar</button>
+            </td>
+        </tr>
+
+        <tr class="table-warning">
+            <td>**2036**</td>
+            <td>Carlos Rivas</td>
+            <td>Cusco Central</td>
+            <td>Recojo en Tienda</td>
+            <td>**Pendiente**</td>
+            <td>15/10/2025 10:28</td>
+            <td>**55.90**</td>
+            <td>
+                <button class="btn btn-sm btn-danger disabled">Detalle</button>
+                <button class="btn btn-sm btn-success disabled">Iniciar</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td>**1998**</td>
+            <td>Elena Quispe</td>
+            <td>Lima Centro</td>
+            <td>Delivery</td>
+            <td>Completado</td>
+            <td>14/10/2025 19:40</td>
+            <td>178.20</td>
+            <td>
+                <button class="btn btn-sm btn-danger disabled">Ver Factura</button>
+                <button class="btn btn-sm btn-secondary disabled">Cerrado</button>
+            </td>
+        </tr>
+
         </tbody>
     </table>
 

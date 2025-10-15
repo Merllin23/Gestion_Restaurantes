@@ -9,7 +9,7 @@
         <a th:href="@{/admin/ordenes_compra/create}" class="btn btn-danger">Nueva Orden</a>
     </div>
 
-    <table class="table table-striped">
+    <table class="table table-striped table-hover">
         <thead class="table-danger">
         <tr>
             <th># Orden</th>
@@ -17,22 +17,81 @@
             <th>Insumo</th>
             <th>Cantidad</th>
             <th>Fecha</th>
-            <th>Acciones</th>
+            <th>Estado</th> <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
+
         <tr th:each="orden : ${ordenes}">
             <td th:text="${orden.idOrden}">1</td>
             <td th:text="${orden.proveedor.nombre}">Proveedor</td>
             <td th:text="${orden.insumo.nombre}">Insumo</td>
             <td th:text="${orden.cantidad}">0</td>
             <td th:text="${#dates.format(orden.fecha, 'dd/MM/yyyy')}">01/01/2025</td>
+            <td th:text="${orden.estado}">Pendiente</td>
             <td>
                 <a th:href="@{/admin/ordenes_compra/edit/{id}(id=${orden.idOrden})}" class="btn btn-sm btn-success">Editar</a>
                 <a th:href="@{/admin/ordenes_compra/delete/{id}(id=${orden.idOrden})}" class="btn btn-sm btn-danger">Eliminar</a>
             </td>
         </tr>
+
+        <tr class="table-warning">
+            <td>**OC-0051**</td>
+            <td>Lácteos del Valle</td>
+            <td>Leche Fresca</td>
+            <td>100 Litros</td>
+            <td>15/10/2025</td>
+            <td>**Pendiente de Envío**</td>
+            <td>
+                <button class="btn btn-sm btn-success disabled">Editar</button>
+                <button class="btn btn-sm btn-danger disabled">Cancelar</button>
+            </td>
+        </tr>
+
+        <tr class="table-success">
+            <td>**OC-0050**</td>
+            <td>Carnes S.A.C.</td>
+            <td>Pechuga de Pollo</td>
+            <td>80 Kg</td>
+            <td>10/10/2025</td>
+            <td>**Recibida**</td>
+            <td>
+                <button class="btn btn-sm btn-success disabled">Ver Factura</button>
+                <button class="btn btn-sm btn-danger disabled">Archivar</button>
+            </td>
+        </tr>
+
+        <tr class="table-info">
+            <td>**OC-0052**</td>
+            <td>Distribuidora Andina</td>
+            <td>Papas Blancas</td>
+            <td>300 Kg</td>
+            <td>16/10/2025</td>
+            <td>**En Tránsito**</td>
+            <td>
+                <button class="btn btn-sm btn-success disabled">Ver Tracking</button>
+                <button class="btn btn-sm btn-danger disabled">Rechazar</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td>**OC-0049**</td>
+            <td>Granos Perú</td>
+            <td>Arroz Superior</td>
+            <td>20 Sacos</td>
+            <td>05/10/2025</td>
+            <td>Completada</td>
+            <td>
+                <button class="btn btn-sm btn-success disabled">Editar</button>
+                <button class="btn btn-sm btn-danger disabled">Eliminar</button>
+            </td>
+        </tr>
+
         </tbody>
     </table>
+
+    <div th:if="${#lists.isEmpty(ordenes)}" class="alert alert-info text-center mt-5">
+        No hay órdenes de compra activas registradas.
+    </div>
 
 </div>
