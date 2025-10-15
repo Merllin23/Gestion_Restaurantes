@@ -1,0 +1,13 @@
+<div xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     layout:decorate="~{layout}"
+     layout:fragment="content">
+
+    <div class="text-center mt-5">
+        <h1 class="display-1 text-danger">¡Oops!</h1>
+        <h3 class="mb-3">Página no encontrada</h3>
+        <p class="mb-4">La página que buscas no existe o ha sido movida.</p>
+        <a th:href="@{/}" class="btn btn-danger btn-lg">Volver al inicio</a>
+    </div>
+
+</div>

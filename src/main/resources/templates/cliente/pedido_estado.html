@@ -1,0 +1,43 @@
+<div xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     layout:decorate="~{layout}"
+     layout:fragment="content">
+
+    <h2 class="text-center mt-4 mb-4">Mis Pedidos</h2>
+
+    <div th:if="${#lists.isEmpty(pedidos)}" class="text-center mt-5">
+        <p class="lead">No tienes pedidos realizados.</p>
+        <a th:href="@{/cliente/menu}" class="btn btn-danger">Ver Menú</a>
+    </div>
+
+    <div th:if="${!#lists.isEmpty(pedidos)}">
+        <table class="table table-striped">
+            <thead class="table-danger">
+            <tr>
+                <th># Pedido</th>
+                <th>Fecha y Hora</th>
+                <th>Sucursal</th>
+                <th>Estado</th>
+                <th>Tipo</th>
+                <th>Total</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="pedido : ${pedidos}">
+                <td th:text="${pedido.idPedido}">1</td>
+                <td th:text="${#dates.format(pedido.fechaHora, 'dd/MM/yyyy HH:mm')}">01/01/2025 12:00</td>
+                <td th:text="${pedido.sucursal.nombre}">Sucursal</td>
+                <td th:text="${pedido.estado}">Pendiente</td>
+                <td th:text="${pedido.tipo}">Delivery</td>
+                <td th:text="${pedido.total}">0.00</td>
+                <td>
+                    <a th:href="@{/cliente/pedido/detalle/{id}(id=${pedido.idPedido})}"
+                       class="btn btn-sm btn-danger">Ver Detalle</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

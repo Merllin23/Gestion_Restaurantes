@@ -1,0 +1,46 @@
+<div xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     layout:decorate="~{layout}"
+     layout:fragment="content">
+
+    <h2 class="text-center mt-4 mb-4">Mi Perfil</h2>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <div class="card shadow-sm p-4">
+                <form action="/cliente/perfil/update" method="post">
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Juan Pérez" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Correo Electrónico</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="juan@mail.com" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="telefono" class="form-label">Teléfono</label>
+                        <input type="text" id="telefono" name="telefono" class="form-control" placeholder="987654321">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="direccion" class="form-label">Dirección</label>
+                        <input type="text" id="direccion" name="direccion" class="form-control" placeholder="Av. Principal 123">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Dejar vacío si no cambia">
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-danger btn-lg w-100">Actualizar Perfil</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+</div>

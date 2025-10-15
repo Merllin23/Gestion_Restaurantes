@@ -1,0 +1,38 @@
+<div xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     layout:decorate="~{layout}"
+     layout:fragment="content">
+
+    <h2 class="text-center mt-4 mb-4">Gestión de Platos</h2>
+
+    <div class="text-end mb-3">
+        <a th:href="@{/admin/platos/create}" class="btn btn-danger">Nuevo Plato</a>
+    </div>
+
+    <table class="table table-striped">
+        <thead class="table-danger">
+        <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Disponible</th>
+            <th>Categoría</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="plato : ${platos}">
+            <td th:text="${plato.nombre}">Nombre</td>
+            <td th:text="${plato.descripcion}">Descripción</td>
+            <td th:text="${plato.precio}">0.00</td>
+            <td th:text="${plato.disponible ? 'Sí' : 'No'}">Sí</td>
+            <td th:text="${plato.categoria.nombre}">Categoría</td>
+            <td>
+                <a th:href="@{/admin/platos/edit/{id}(id=${plato.idPlato})}" class="btn btn-sm btn-success">Editar</a>
+                <a th:href="@{/admin/platos/delete/{id}(id=${plato.idPlato})}" class="btn btn-sm btn-danger">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>

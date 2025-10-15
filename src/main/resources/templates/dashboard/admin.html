@@ -1,0 +1,76 @@
+<div xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     layout:decorate="~{layout}"
+     layout:fragment="content">
+
+    <h2 class="text-center mt-4 mb-4">Panel de Administración</h2>
+
+    <div class="row text-center">
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Pedidos</h5>
+                    <p class="card-text">Revisa y gestiona los pedidos de los clientes.</p>
+                    <a th:href="@{/admin/pedidos}" class="btn btn-danger">Ver Pedidos</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Inventario</h5>
+                    <p class="card-text">Controla los insumos y el stock de tus sucursales.</p>
+                    <a th:href="@{/admin/inventario}" class="btn btn-danger">Ver Inventario</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Platos</h5>
+                    <p class="card-text">Crea, edita o elimina platos del menú.</p>
+                    <a th:href="@{/admin/platos}" class="btn btn-danger">Ver Platos</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row text-center mt-3">
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Proveedores</h5>
+                    <p class="card-text">Gestiona los proveedores y sus datos de contacto.</p>
+                    <a th:href="@{/admin/proveedores}" class="btn btn-danger">Ver Proveedores</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Órdenes de Compra</h5>
+                    <p class="card-text">Realiza y revisa órdenes de compra a los proveedores.</p>
+                    <a th:href="@{/admin/ordenes_compra}" class="btn btn-danger">Ver Órdenes</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Reportes</h5>
+                    <p class="card-text">Visualiza reportes de ventas y platos más vendidos.</p>
+                    <a th:href="@{/admin/reportes}" class="btn btn-danger">Ver Reportes</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

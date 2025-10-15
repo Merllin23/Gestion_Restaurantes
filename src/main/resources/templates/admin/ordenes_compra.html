@@ -1,0 +1,38 @@
+<div xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     layout:decorate="~{layout}"
+     layout:fragment="content">
+
+    <h2 class="text-center mt-4 mb-4">Órdenes de Compra</h2>
+
+    <div class="text-end mb-3">
+        <a th:href="@{/admin/ordenes_compra/create}" class="btn btn-danger">Nueva Orden</a>
+    </div>
+
+    <table class="table table-striped">
+        <thead class="table-danger">
+        <tr>
+            <th># Orden</th>
+            <th>Proveedor</th>
+            <th>Insumo</th>
+            <th>Cantidad</th>
+            <th>Fecha</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="orden : ${ordenes}">
+            <td th:text="${orden.idOrden}">1</td>
+            <td th:text="${orden.proveedor.nombre}">Proveedor</td>
+            <td th:text="${orden.insumo.nombre}">Insumo</td>
+            <td th:text="${orden.cantidad}">0</td>
+            <td th:text="${#dates.format(orden.fecha, 'dd/MM/yyyy')}">01/01/2025</td>
+            <td>
+                <a th:href="@{/admin/ordenes_compra/edit/{id}(id=${orden.idOrden})}" class="btn btn-sm btn-success">Editar</a>
+                <a th:href="@{/admin/ordenes_compra/delete/{id}(id=${orden.idOrden})}" class="btn btn-sm btn-danger">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>

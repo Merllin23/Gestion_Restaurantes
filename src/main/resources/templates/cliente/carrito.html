@@ -1,0 +1,44 @@
+<div xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     layout:decorate="~{layout}"
+     layout:fragment="content">
+
+    <h2 class="text-center mt-4 mb-4">Tu Carrito</h2>
+
+    <div th:if="${#lists.isEmpty(carrito)}" class="text-center mt-5">
+        <p class="lead">Tu carrito está vacío.</p>
+        <a th:href="@{/cliente/menu}" class="btn btn-danger">Ver Menú</a>
+    </div>
+
+    <div th:if="${!#lists.isEmpty(carrito)}">
+        <table class="table table-striped">
+            <thead class="table-danger">
+            <tr>
+                <th>Plato</th>
+                <th>Precio Unitario</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="item : ${carrito}">
+                <td th:text="${item.plato.nombre}">Nombre Plato</td>
+                <td th:text="${item.precioUnitario}">0.00</td>
+                <td th:text="${item.cantidad}">0</td>
+                <td th:text="${item.cantidad * item.precioUnitario}">0.00</td>
+                <td>
+                    <a th:href="@{/cliente/carrito/remove/{id}(id=${item.idDetalle})}"
+                       class="btn btn-sm btn-danger">Eliminar</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="text-end mt-3">
+            <h4>Total: <span th:text="${total}">0.00</span></h4>
+            <a th:href="@{/cliente/carrito/checkout}" class="btn btn-success btn-lg mt-2">Proceder al Pago</a>
+        </div>
+    </div>
+
+</div>

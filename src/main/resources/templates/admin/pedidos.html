@@ -1,0 +1,38 @@
+<div xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     layout:decorate="~{layout}"
+     layout:fragment="content">
+
+    <h2 class="text-center mt-4 mb-4">Gestión de Pedidos</h2>
+
+    <table class="table table-striped">
+        <thead class="table-danger">
+        <tr>
+            <th># Pedido</th>
+            <th>Cliente</th>
+            <th>Sucursal</th>
+            <th>Tipo</th>
+            <th>Estado</th>
+            <th>Fecha y Hora</th>
+            <th>Total</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pedido : ${pedidos}">
+            <td th:text="${pedido.idPedido}">1</td>
+            <td th:text="${pedido.cliente.nombre}">Cliente</td>
+            <td th:text="${pedido.sucursal.nombre}">Sucursal</td>
+            <td th:text="${pedido.tipo}">Delivery</td>
+            <td th:text="${pedido.estado}">Pendiente</td>
+            <td th:text="${#dates.format(pedido.fechaHora, 'dd/MM/yyyy HH:mm')}">01/01/2025 12:00</td>
+            <td th:text="${pedido.total}">0.00</td>
+            <td>
+                <a th:href="@{/admin/pedidos/detalle/{id}(id=${pedido.idPedido})}" class="btn btn-sm btn-danger">Detalle</a>
+                <a th:href="@{/admin/pedidos/update/{id}(id=${pedido.idPedido})}" class="btn btn-sm btn-success">Actualizar Estado</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
