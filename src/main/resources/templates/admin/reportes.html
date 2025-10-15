@@ -1,0 +1,76 @@
+<div xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     layout:decorate="~{layout}"
+     layout:fragment="content">
+
+    <h2 class="text-center mt-4 mb-4">Reportes de Ventas</h2>
+
+    <div class="d-flex justify-content-end mb-3">
+        <a th:href="@{/admin/reportes/exportar/excel}" class="btn btn-success me-2">
+            <i class="fas fa-file-excel"></i> Exportar a Excel
+        </a>
+        <a th:href="@{/admin/reportes/filtrar}" class="btn btn-secondary">
+            <i class="fas fa-filter"></i> Filtrar Fechas
+        </a>
+    </div>
+
+    <table class="table table-striped table-hover">
+        <thead class="table-danger">
+        <tr>
+            <th># Reporte</th>
+            <th>Sucursal</th>
+            <th>Fecha</th>
+            <th>Total Ventas (PEN)</th>
+            <th>Platos Más Vendidos</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr th:each="rep : ${reportes}">
+            <td th:text="${rep.idReporte}">1</td>
+            <td th:text="${rep.sucursal.nombre}">Sucursal</td>
+            <td th:text="${#dates.format(rep.fecha, 'dd/MM/yyyy')}">01/01/2025</td>
+            <td th:text="${#numbers.formatDecimal(rep.totalVentas, 1, 'COMMA', 2, 'POINT')}">0.00</td>
+            <td th:text="${rep.platosMasVendidos}">Plato1, Plato2</td>
+        </tr>
+
+        <tr>
+            <td>**RPT-035**</td>
+            <td>Lima Centro</td>
+            <td>14/10/2025</td>
+            <td>**8,540.50**</td>
+            <td>Lomo Saltado, Ají de Gallina</td>
+        </tr>
+
+        <tr>
+            <td>**RPT-036**</td>
+            <td>Arequipa Sur</td>
+            <td>14/10/2025</td>
+            <td>**5,120.00**</td>
+            <td>Rocoto Relleno, Chupe de Camarones</td>
+        </tr>
+
+        <tr>
+            <td>**RPT-037**</td>
+            <td>Cusco Principal</td>
+            <td>14/10/2025</td>
+            <td>**3,950.80**</td>
+            <td>Pollo a la Brasa, Lasaña</td>
+        </tr>
+
+        <tr>
+            <td>**RPT-034**</td>
+            <td>Lima Centro</td>
+            <td>13/10/2025</td>
+            <td>7,990.25</td>
+            <td>Ceviche Clásico, Causa Limeña</td>
+        </tr>
+
+        </tbody>
+    </table>
+
+    <div th:if="${#lists.isEmpty(reportes)}" class="alert alert-info text-center mt-5">
+        Aún no se ha generado ningún reporte de ventas.
+    </div>
+
+</div>

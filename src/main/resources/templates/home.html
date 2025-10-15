@@ -1,0 +1,67 @@
+<div xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     layout:decorate="~{layout}"
+     layout:fragment="content">
+
+    <!-- Hero con imagen de fondo -->
+    <div class="hero-section text-center position-relative"
+         th:style="'background: url(' + @{/home/menu-hero.png} + ') center/cover no-repeat; color: #fff; padding: 150px 20px;'">
+        <div class="position-absolute top-0 start-0 w-100 h-100"
+             style="background: rgba(0,0,0,0.5); z-index: 1;"></div>
+
+        <div class="position-relative" style="z-index: 2;">
+            <h1 class="display-3 fw-bold">¡Bienvenido a Pluck Online!</h1>
+            <p class="lead">Explora nuestro menú y disfruta del auténtico sabor de Pluck.</p>
+            <a th:href="@{/cliente/menu}" class="btn btn-danger btn-lg mt-3">Ver Menú</a>
+
+            <div class="mt-3" th:if="${#authentication != null and #authentication.principal != 'anonymousUser'}">
+                <a th:href="@{/cliente/pedido}" class="btn btn-success btn-lg">Hacer Pedido</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección de productos destacados -->
+    <h2 class="text-center mt-5 mb-4">Productos Destacados</h2>
+    <div class="row">
+
+        <!-- Frappés -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <img th:src="@{/home/frappe.jfif}" class="card-img-top" alt="Frappé" style="height: 250px; object-fit: cover;">
+                <div class="card-body text-center d-flex flex-column">
+                    <h5 class="card-title">Frappés</h5>
+                    <p class="card-text flex-grow-1">Refresca tu día con nuestros deliciosos frappés con sabores únicos.</p>
+                    <a th:href="@{/cliente/menu}" class="btn btn-danger mt-2">Ordenar</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Combos -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <img th:src="@{/home/combo.jfif}" class="card-img-top" alt="Combo" style="height: 250px; object-fit: cover;">
+                <div class="card-body text-center d-flex flex-column">
+                    <h5 class="card-title">Combos</h5>
+                    <p class="card-text flex-grow-1">Comparte con familia y amigos nuestros combos más sabrosos y completos.</p>
+                    <a th:href="@{/cliente/menu}" class="btn btn-danger mt-2">Ordenar</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Snacks -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <img th:src="@{/home/snack.jfif}" class="card-img-top" alt="Snacks" style="height: 250px; object-fit: cover;">
+                <div class="card-body text-center d-flex flex-column">
+                    <h5 class="card-title">Snacks</h5>
+                    <p class="card-text flex-grow-1">Pequeñas delicias para acompañar tus comidas o disfrutar entre horas.</p>
+                    <a th:href="@{/cliente/menu}" class="btn btn-danger mt-2">Ordenar</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    </div>
+
+</div>
