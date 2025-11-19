@@ -17,3 +17,30 @@ Facilitar el control de inventarios y la rotación de productos.
 Ofrecer herramientas analíticas para la toma de decisiones estratégicas.
 
 Mejorar la comunicación entre áreas (cocina, caja, administración).
+
+🔧 Funcionalidades Principales del Sistema
+🛒 1. Gestión de Pedidos
+
+Registro de pedidos en salón, para llevar y delivery.
+
+Integración con POS y comandas digitales.
+
+Estado del pedido en tiempo real (recibido, en preparación, listo, entregado).
+
+🍳 2. Módulo de Cocina (KDS)
+
+Pantalla de cocina que recibe los pedidos automáticamente.
+
+Priorización según tipo de plato y tiempos de preparación.
+
+Notificaciones al terminar un plato.
+
+📦 3. Control de Inventarios
+
+Registro de entradas y salidas de insumos por sucursal.
+
+Alertas automáticas de stock mínimo.
+
+Control de mermas y desperdicios.
+
+Kardex automatizado.
